@@ -6,9 +6,17 @@ const server = express();
 
 server.use(express.json());
 
+
 server.get('/', async(req, res) => {
-    res.status(200).json({ api: 'up' })
+
+    res.status(200).json({ message: 'recieved data' })
 })
+
+server.get('/', async (req, res) => {
+    const allgames = await games;
+  
+    res.status(200).json(allgames);
+  });
 
 server.post('/games', async(req, res) => {
     const game = req.body;
